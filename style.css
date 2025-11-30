@@ -1,0 +1,404 @@
+:root {
+    --primary-pink: #ff0099;
+    --light-pink: #ff66c4;
+    --dark-bg: #050205;
+    --glass-bg: rgba(20, 5, 15, 0.6);
+    --card-bg: rgba(25, 10, 20, 0.5);
+    --border-color: rgba(255, 0, 153, 0.3);
+    --text-gray: #aaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: white;
+    min-height: 100vh;
+    /* Изменено с height на min-height для прокрутки */
+    overflow-x: hidden;
+    /* Скрываем горизонтальную прокрутку */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+/* Фон с сеткой */
+.grid-bg {
+    position: fixed;
+    /* Фиксируем фон */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 0, 153, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 153, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    mask-image: radial-gradient(circle at center top, black 40%, transparent 100%);
+    pointer-events: none;
+}
+
+/* Навигация */
+.navbar {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1000px;
+    padding: 15px 30px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255, 0, 153, 0.1);
+    z-index: 10;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--primary-pink);
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px var(--primary-pink);
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+    text-shadow: 0 0 10px white;
+}
+
+.nav-icons .icon-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icons .icon-btn:hover {
+    background: var(--primary-pink);
+    box-shadow: 0 0 15px var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+
+/* Размер иконок в навигации */
+.nav-icons .icon-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Главный блок (Hero) */
+.hero {
+    text-align: center;
+    margin-top: 80px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+}
+
+.glow-title {
+    font-size: 6rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    background: linear-gradient(to bottom, #fff, var(--primary-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px var(--primary-pink));
+    margin-bottom: 20px;
+}
+
+/* Разделитель */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-pink), transparent);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    font-size: 1rem;
+}
+
+/* Кнопки */
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+/* Размер иконок в кнопках */
+.btn i {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-pink), #ff99cc);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 153, 0.4);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(255, 0, 153, 0.6);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-pink);
+    background: rgba(255, 0, 153, 0.1);
+}
+
+/* Баннер Discord */
+.discord-banner {
+    background: rgba(20, 5, 10, 0.8);
+    border: 1px solid var(--border-color);
+    padding: 15px 25px;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 20px rgba(255, 0, 153, 0.1);
+    max-width: 90%;
+}
+
+.discord-icon-box {
+    background: var(--primary-pink);
+    /* Розовый вместо оранжевого */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 10px var(--primary-pink);
+}
+
+.badge {
+    background: #ffaa00;
+    /* Оставил оранжевым для контраста, как verified */
+    color: black;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.sub-text {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+}
+
+/* =========================================
+   СЕКЦИЯ ОСОБЕННОСТЕЙ (FEATURES SECTION)
+========================================= */
+.features-section {
+    margin-top: 120px;
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.pink-text {
+    color: var(--primary-pink);
+    text-shadow: 0 0 15px var(--primary-pink);
+}
+
+.section-subtitle {
+    color: var(--text-gray);
+    margin-bottom: 50px;
+}
+
+/* Сетка карточек */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+/* Стиль карточки */
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: left;
+    transition: 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.feature-card:hover {
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 30px rgba(255, 0, 153, 0.2);
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    color: var(--primary-pink);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 5px var(--primary-pink));
+}
+
+.card-icon i {
+    width: 32px;
+    height: 32px;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.feature-card p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+/* Анимация частиц (Оставлена как есть) */
+#particles-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    color: var(--primary-pink);
+    font-size: 12px;
+    pointer-events: none;
+    animation: floatUp 10s linear infinite;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .glow-title {
+        font-size: 4rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .discord-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        /* Одна колонка на мобильных */
+    }
+}
